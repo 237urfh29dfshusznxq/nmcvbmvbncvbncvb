@@ -1222,7 +1222,7 @@ function library:Notification(info)
                     uis.MouseIconEnabled = true
                 end
                 --
-                function window:Watermark(info)
+                 function window:Watermark(info)
                     window.watermark = {visible = false}
                     --
                     local info = info or {}
@@ -1233,7 +1233,7 @@ function library:Notification(info)
                     local watermark_outline = utility:Create("Frame", {Vector2.new(100,38/2-10)}, {
                         Size = utility:Size(0, text_bounds.X+20, 0, 21),
                         Position = utility:Position(0, 100, 0, 38/2-10),
-                        Hidden = false,
+                        Hidden = true,
                         ZIndex = 60,
                         Color = theme.outline,
                         Visible = window.watermark.visible
@@ -1306,13 +1306,12 @@ function library:Notification(info)
                         watermark_accent.Size = utility:Size(1, 0, 0, 1, watermark_frame)
                     end
                     --
-                    function window.watermark:Visibility(visible)
-                        watermark_outline.Visible = visible
-                        watermark_inline.Visible = visible
-                        watermark_frame.Visible = visible
-                        watermark_accent.Visible = visible
-                        watermark_title.Visible = visible
-                        window.watermark.visible = visible
+                    function window.watermark:Visibility()
+                        watermark_outline.Visible = window.watermark.visible
+                        watermark_inline.Visible = window.watermark.visible
+                        watermark_frame.Visible = window.watermark.visible
+                        watermark_accent.Visible = window.watermark.visible
+                        watermark_title.Visible = window.watermark.visible
                     end
                     --
                     function window.watermark:Update(updateType, updateValue)
