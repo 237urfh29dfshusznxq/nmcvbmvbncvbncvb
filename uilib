@@ -2076,16 +2076,6 @@ function library:Notification(info)
                     Color = "textdark"
                 }
                 
-                local Page_accent = utility:Create("Frame", {Vector2.new(0,0), page_button_color}, {
-                    Size = utility:Size(1, 0, 0, 1, page_button_color),
-                    Position = utility:Position(0, 0, 0, 1, page_button_color),
-                    Color = theme.accent,
-                    Visible = false
-                })page["Page_accent"] = Page_accent
-                --
-                library.colors[Page_accent] = {
-                    Color = "accent"
-                }
                 --
                 window.pages[#window.pages + 1] = page
                 --
@@ -2124,7 +2114,6 @@ function library:Notification(info)
                         window.currentPage.page_button_color.Size = utility:Size(1, -2, 1, -1, window.currentPage.page_button_inline)
                         window.currentPage.page_button_color.Color = theme.darkcontrast
                         window.currentPage.page_button_title.Color = theme.textdark
-                        window.currentPage.Page_accent.Visible = false
                         window.currentPage.page_button_title.Color = theme.textdark
                         window.currentPage.open = false
                         --
@@ -2149,8 +2138,7 @@ function library:Notification(info)
                     window.currentPage = page
                     page_button_color.Size = utility:Size(1, -2, 1, 0, page_button_inline)
                     page_button_color.Color = theme.lightcontrast
-                    page_button_title.Color = theme.accent
-                    window.currentPage.Page_accent.Visible = true
+                    page_button_title.Color = theme.textcolor
                     page.open = true
                     --
                     library.colors[page_button_color] = {
@@ -2159,7 +2147,7 @@ function library:Notification(info)
                     --
                     library.colors[page_button_title] = {
                         OutlineColor = "textborder",
-                        Color = "accent"
+                        Color = "textcolor"
                     }
                     --
                     for i,v in pairs(page.sections) do
